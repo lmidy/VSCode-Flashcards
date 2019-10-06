@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { blue } from '../utils/colors';
+import { blue, white } from '../utils/colors';
 
 export default function CustomButton({ children, onPress, style = {} }) {
   return (
-    <View style = {styles.container}>
+    <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
           <Text style={[styles.buttonText, style]}>{children}</Text>
       </TouchableOpacity>
@@ -13,8 +13,9 @@ export default function CustomButton({ children, onPress, style = {} }) {
 }
 
 const styles = StyleSheet.create ({
-  container: {
-    flex: 1,
+  buttoncontainer: {
+    alignItems: 'center',
+    marginBottom: 10
   },
   button: {
     width: '100%',
@@ -25,7 +26,7 @@ const styles = StyleSheet.create ({
     marginTop: 10
   },
   buttonText:{
-    color:'#fff',
+    color: white,
     textAlign:'center',
   },
 })

@@ -11,4 +11,6 @@ export const blue3= '#b3e5fc';
 export const blue4= '#2e86c1';
 export const lightgreen= '#DAF7A6';
 export const mustard= '#FFC300';
+export const red='#FF3D00';
+export const green='#8BC34A';
 

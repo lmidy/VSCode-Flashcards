@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
 import { AppLoading } from 'expo'
 import DeckList from './DeckList'
-import { gray,  white, blue, lightgreen, blue4, blue2, bluegray } from '../utils/colors';
+import { white } from '../utils/colors';
 
 class Decks extends React.Component{
     constructor(props){
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     },
     title: {
       textAlign: 'center',
-      fontSize: 20
+      fontSize: 28,
+      fontWeight: "bold",
     }
   });

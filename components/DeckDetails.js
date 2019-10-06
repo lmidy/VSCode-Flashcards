@@ -11,10 +11,7 @@ export class DeckDetails extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.deck !== undefined;
   }
-  handleDelete = id => {
-    const { navigation } = this.props;
-    navigation.goBack();
-  };
+  
   render() {
     const { deck } = this.props;
 

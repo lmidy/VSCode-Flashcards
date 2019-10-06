@@ -1,7 +1,8 @@
 import { AsyncStorage } from 'react-native'
-import { Notifications, Permissions } from 'expo'
+import { Notifications } from 'expo'
+import * as Permissions from 'expo-permissions'
 
-const NOTIFICATION_KEY = 'UdacityFlashCards:notifications'
+const NOTIFICATION_KEY = 'FlashCards:notifications'
 
 export function generateUID () {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
