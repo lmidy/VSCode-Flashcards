@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import { connect } from 'react-redux'
-import { black, gray, white } from '../utils/colors'
+import { black, gray, blue } from '../utils/colors'
+import CustomButton from './CustomButton';
 
 class Deck extends React.Component{
     constructor(props){
@@ -32,18 +33,17 @@ class Deck extends React.Component{
             <Animated.View style={[styles.deck, { opacity }]}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.count}>{questions.length} {questions.length === 1 ? `card` : `cards`}</Text>
-                <TouchableOpacity
-                style={[styles.btn, {marginTop: 50}]}
-                onPress={() => this.props.navigation.navigate('AddCard', {deckId: deckId})}
+                <CustomButton
+                    style={[styles.btn, ]}
+                    onPress={() => this.props.navigation.navigate('AddCard', {deckId: deckId})}
                 >
-                    <Text style={styles.btnText}>Add Card</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                style={[styles.btn, {backgroundColor: black}]}
-                onPress={() => (questions.length === 0 ? alert('Get started by adding few cards!') : this.props.navigation.navigate('Question', {deckId: deckId}))}
+                     <Text style={styles.btnText}>Add Card</Text>
+                </CustomButton>
+                <CustomButton
+                    onPress={() => (questions.length === 0 ? alert('Get started by adding few cards!') : this.props.navigation.navigate('Quiz', {deckId: deckId}))}
                 >
-                    <Text style={[styles.btnText, {color: white}]}>Start Quiz!</Text>
-                </TouchableOpacity>
+                    <Text>Start Quiz!</Text>
+                </CustomButton>
             </Animated.View>
         )
     }
@@ -67,18 +67,12 @@ const styles = StyleSheet.create({
         color: gray
     },
     btn: {
-        width: 150,
-        height: 50,
-        backgroundColor: white,
-        borderRadius: 0,
-        borderColor: black,
-        borderWidth: 1,
-        padding: 15,
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 17,
-        justifyContent: 'center',
-        alignItems: 'center'
+        width: '100%',
+        height: 40,
+        padding: 10,
+        backgroundColor: blue,
+        borderRadius:7,
+        marginTop: 10
     },
     btnText: {
         fontSize: 16,

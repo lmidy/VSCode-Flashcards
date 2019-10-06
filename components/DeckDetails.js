@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import Deck from './Deck';
 import CustomButton from './CustomButton';
-import { gray, textGray, green, white, red } from '../utils/colors';
+import { gray, green, white, red } from '../utils/colors';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
@@ -23,8 +23,6 @@ export class DeckDetails extends Component {
         <Deck id={deck.title} />
         <View>
           <CustomButton
-            btnStyle={{ backgroundColor: white, borderColor: textGray }}
-            txtStyle={{ color: textGray }}
             onPress={() =>
               this.props.navigation.navigate('AddCard', { title: deck.title })
             }
@@ -32,8 +30,6 @@ export class DeckDetails extends Component {
             Add Card
           </CustomButton>
           <CustomButton
-            btnStyle={{ backgroundColor: green, borderColor: white }}
-            txtStyle={{ color: white }}
             onPress={() =>
               this.props.navigation.navigate('Quiz', { title: deck.title })
             }
@@ -53,8 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingLeft: 16,
     paddingRight: 16,
-    paddingBottom: 16,
-    backgroundColor: gray
+    paddingBottom: 16
   }
 });
 

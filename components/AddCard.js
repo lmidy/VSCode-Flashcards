@@ -83,20 +83,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: black,
         marginBottom: 15
-    },
-    submitBtn: {
-        backgroundColor: black,
-        padding: 10,
-        borderRadius: 0,
-        height: 45,
-        marginLeft: 40,
-        marginRight: 40,
-        marginBottom: 100
-    },
-    submitBtnText: {
-        color: white,
-        fontSize: 22,
-        textAlign: 'center'
     }
 })
 

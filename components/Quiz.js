@@ -27,7 +27,8 @@ class Quiz extends React.Component{
             showAnswer: false,
             correct : 0,
             incorrect : 0,
-    })
+        })
+    }
 
     handleAnswer = (result) => {
         this.setState((state) => ({
@@ -44,7 +45,7 @@ class Quiz extends React.Component{
         }))
     }
 
-    render(){
+    render() {
         const { index, showAnswer, correct, incorrect } = this.state
         const { deckId, deck } = this.props
         const showCard = index < deck.questions.length ? true : false
@@ -72,24 +73,24 @@ class Quiz extends React.Component{
             </View>
         )
         
-      }
+    }
 }
 
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  count: {
-    alignSelf: 'flex-start',
-    marginTop: 10,
-    marginLeft: 10,
-    color: black,
-    fontWeight: 'bold',
-    fontSize: 18
-  }
-})
+    const styles = StyleSheet.create({
+        center: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        count: {
+            alignSelf: 'flex-start',
+            marginTop: 10,
+            marginLeft: 10,
+            color: black,
+            fontWeight: 'bold',
+            fontSize: 18
+        }
+    })
 
 function mapStateToProps (state, { navigation }) {
     const { deckId } = navigation.state.params

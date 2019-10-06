@@ -3,7 +3,7 @@ import { Text, TextInput, KeyboardAvoidingView, TouchableOpacity, StyleSheet, Al
 import { addDeck } from '../actions'
 import { saveDeck } from '../utils/api'
 import { connect } from 'react-redux'
-import { white, black, gray, blue } from '../utils/colors'
+import { white, black, gray, blue, blue3 } from '../utils/colors'
 import { generateUID } from '../utils/helpers'
 import CustomButton from './CustomButton';
 
@@ -51,7 +51,8 @@ class AddDeck extends React.Component{
                  onChangeText={(nameOfDeck) => this.setState({nameOfDeck})}
                 />
                 <CustomButton
-                  onPress={this.submit}>
+                  onPress={this.submit}
+                  styles={{ backgroundColor: blue3, borderColor: white,width: '100%' }}>
                     <Text>Create Deck</Text>
                 </CustomButton>
             </KeyboardAvoidingView>
