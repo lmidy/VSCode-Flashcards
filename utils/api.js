@@ -1,9 +1,20 @@
 import { AsyncStorage } from 'react-native'
-import { formatDecksResults, FLASHCARD_STORAGE_KEY } from './_decks'
+import { formatDecksResults, FLASHCARD_STORAGE_KEY, starterData } from './_decks'
 
-export function getDecks () {
-    return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
-    .then(formatDecksResults)
+export async function getDecks () {
+    try {
+        const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
+        if(storeResults == null){
+            AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(starterData))
+        }
+        return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
+        .then(formatDecksResults)
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+    
 }
 
 export function saveDeck(key, deck) {
