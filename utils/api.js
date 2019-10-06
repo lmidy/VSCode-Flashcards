@@ -3,7 +3,7 @@ import { formatDecksResults, FLASHCARD_STORAGE_KEY, starterData } from './_decks
 
 export async function getDecks () {
     try {
-        const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
+        const storeResults = await AsyncStorage.getItem(FLASHCARD_STORAGE_KEY);
         if(storeResults == null){
             AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(starterData))
         }

@@ -1,117 +1,110 @@
-import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet } from 'react-native';
-import CustomButton from './CustomButton';
-import { gray, green } from '../utils/colors';
-import { connect } from 'react-redux';
-import { addCard } from '../actions/index';
-import { addCardHelper } from '../utils/api';
+import React from 'react'
+import { Text, TextInput, KeyboardAvoidingView, TouchableOpacity, StyleSheet } from 'react-native'
+import { addCard } from '../actions'
+import { saveCard } from '../utils/api'
+import { connect } from 'react-redux'
+import { white, black } from '../utils/colors'
 
-export class AddCard extends Component {
-  state = {
-    question: '',
-    answer: ''
-  };
-  handleQuestionChange = question => {
-    this.setState({ question });
-  };
-  handleAnswerChange = answer => {
-    this.setState({ answer });
-  };
-  handleSubmit = () => {
-    const { addCard, title, navigation } = this.props;
-    const card = {
-      question: this.state.question,
-      answer: this.state.answer
-    };
-    addCard(title, card);
-
-    this.setState({ question: '', answer: '' });
-    navigation.goBack();
-  };
-  render() {
+SubmitBtn = ({ onPress }) => {
     return (
-      <View style={styles.container}>
-        <View>
-          <View style={styles.block}>
-            <Text style={styles.title}>Add a question</Text>
-          </View>
-          <View style={[styles.block]}>
-            <TextInput
-              style={styles.input}
-              value={this.state.question}
-              onChangeText={this.handleQuestionChange}
-              placeholder="Question"
-              autoFocus={true}
-              returnKeyType="next"
-              onSubmitEditing={() => this.answerTextInput.focus()}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={[styles.block]}>
-            <TextInput
-              style={styles.input}
-              value={this.state.answer}
-              onChangeText={this.handleAnswerChange}
-              placeholder="Answer"
-              ref={input => {
-                this.answerTextInput = input;
-              }}
-              returnKeyType="done"
-              onSubmitEditing={this.handleSubmit}
-            />
-          </View>
-          <CustomButton
-            btnStyle={{ backgroundColor: green, borderColor: '#fff' }}
-            onPress={this.handleSubmit}
-            disabled={this.state.question === '' || this.state.answer === ''}
-          >
-            Submit
-          </CustomButton>
-        </View>
-        <View style={{ height: '30%' }} />
-      </View>
-    );
-  }
+        <TouchableOpacity
+         style={styles.submitBtn}
+         onPress={onPress}>
+            <Text style={styles.submitBtnText}>Create Card</Text>
+        </TouchableOpacity>
+    )
+}
+
+class AddCard extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            question: '',
+            answer: ''
+        }
+    }
+
+    submit = () => {
+        const { question, answer } = this.state
+        const { deckId, dispatch } = this.props
+        if(question === '' || answer === ''){
+            alert('Please fill in both the input fields')
+            return 
+        }
+
+        dispatch(addCard(deckId, question, answer))
+        this.setState({
+            question: '',
+            answer: ''
+        })
+        saveCard(deckId, question, answer) //store the card in asyncstorage
+    }
+
+    render(){
+        const { question, answer } = this.state
+        
+        return(
+            <KeyboardAvoidingView behavior='padding' style={styles.container}>
+                <Text style={styles.label}>Question</Text>
+                <TextInput
+                 value={question}
+                 style={styles.input}
+                 onChangeText={(question) => this.setState({question})}
+                 autoFocus={true}
+                />
+                <Text style={styles.label}>Answer</Text>
+                <TextInput
+                 value={answer}
+                 style={styles.input}
+                 onChangeText={(answer) => this.setState({answer})}
+                />
+                <SubmitBtn onPress={this.submit} />
+            </KeyboardAvoidingView>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingBottom: 16,
-    backgroundColor: gray,
-    justifyContent: 'space-around'
-  },
-  block: {
-    marginBottom: 20
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 32
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    backgroundColor: '#fff',
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 5,
-    fontSize: 20,
-    height: 40
-  }
-});
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 40
+    },
+    question: {
+        fontSize: 18,
+        alignSelf: 'flex-start',
+        color: black
+    },
+    input: {
+        width: 250,
+        height: 44,
+        padding: 8,
+        borderWidth: 1,
+        borderColor: black,
+        marginBottom: 15
+    },
+    submitBtn: {
+        backgroundColor: black,
+        padding: 10,
+        borderRadius: 0,
+        height: 45,
+        marginLeft: 40,
+        marginRight: 40,
+        marginBottom: 100
+    },
+    submitBtnText: {
+        color: white,
+        fontSize: 22,
+        textAlign: 'center'
+    }
+})
 
-const mapStateToProps = (state, { navigation }) => {
-  const title = navigation.getParam('title', 'undefined');
+function mapStateToProps(state, { navigation }){
+    const { deckId } = navigation.state.params
+    return {
+        deckId
+    }
+}
 
-  return {
-    title
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { addCard }
-)(AddCard);
+export default connect(mapStateToProps)(AddCard)

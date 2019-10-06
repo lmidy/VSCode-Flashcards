@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, AsyncStorage, TextInput, Button, Alert, Text, TouchableOpacity } from 'react-native';
- 
+import { blue } from '../utils/colors'
 export default class Test extends Component {
  
  
   constructor()
   {
     super();
-  
     this.state={
-  
       textInputData : '',
- 
       getValue : ''
-  
     }
-  }
+  };
  
   setValueLocally=()=>{
  
@@ -23,13 +19,13 @@ export default class Test extends Component {
  
     Alert.alert("Value Stored Successfully.")
  
-  }
+  };
  
   getValueLocally=()=>{
  
     AsyncStorage.getItem('Key_27').then((value) => this.setState({ getValue : value }))
  
-  }
+  };
   
   render() {
    
@@ -76,7 +72,6 @@ justifyContent: 'center',
 alignItems: 'center',
 flex:1,
 margin: 10
- 
 },
  
 TextInputStyle:{
@@ -85,7 +80,7 @@ TextInputStyle:{
   height: 40,
   width: '100%',
   borderWidth: 1, 
-  borderColor: '#028b53',
+  borderColor: blue,
   borderRadius: 10
 },
  
@@ -94,7 +89,7 @@ button: {
   width: '100%',
   height: 40,
   padding: 10,
-  backgroundColor: '#4CAF50',
+  backgroundColor: blue,
   borderRadius:7,
   marginTop: 10
 },

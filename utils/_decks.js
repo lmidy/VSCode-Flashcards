@@ -1,8 +1,8 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native'
 
 export const FLASHCARD_STORAGE_KEY = 'Udacity:FlashCards';
 
-const starterData = {
+export const starterData = {
   React: {
     title: 'React',
     questions: [
@@ -38,6 +38,13 @@ function setData() {
     return decks
 }
 
+// setData = async () => {
+//   try {
+//     await AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(decks));
+//   } catch (error) {
+//     // Error saving data
+//   }
+// };
 export function formatDecksResults(results) {
     return results === null ? setData() : JSON.parse(results)
 }

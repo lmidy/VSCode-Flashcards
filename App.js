@@ -12,10 +12,11 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { MaterialIcon } from '@expo/vector-icons';
 import * as Icon from '@expo/vector-icons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { red, gray, purple, white, blue, lightgreen } from './utils/colors';
+import { gray,  white, blue, lightgreen, blue4, blue2, bluegray, black } from './utils/colors';
 import AddDeck from './components/AddDeck';
 import AddCard from './components/AddCard';
 import Decks from './components/Decks';
+import Deck from './components/Deck';
 import Quiz from './components/Quiz';
 import DeckDetails from './components/DeckDetails';
 import Test from './components/Test';
@@ -32,7 +33,7 @@ const Tabs = {
   Decks: {
     screen: Decks,
     navigationOptions: {
-      tabBarLabel: 'Decks',
+      tabBarLabel: 'DECKS',
       tabBarIcon: ({ tintColor }) => (
         <Icon.AntDesign name='stepforward' size={30} color={tintColor} />
       )
@@ -41,7 +42,7 @@ const Tabs = {
   AddDeck: {
     screen: AddDeck,
     navigationOptions: {
-      tabBarLabel: 'Add Deck',
+      tabBarLabel: 'ADD DECK',
       tabBarIcon: ({ tintColor }) => (
         <Icon.AntDesign name="addfolder" size={30} color={ tintColor } />
       )
@@ -50,7 +51,7 @@ const Tabs = {
   Test: {
     screen: Test,
     navigationOptions: {
-      tabBarLabel: 'Test',
+      tabBarLabel: 'TEST',
       tabBarIcon: ({ tintColor }) => (
         <Icon.AntDesign name='stepforward' size={30} color={tintColor} />
       )
@@ -62,10 +63,15 @@ const navigationOptions = {
   tabBarOptions: {
     showIcon: true,
     activeTintColor: white,
+    labelStyle: {
+      fontSize: 16,
+      paddingBottom: 10,
+      fontWeight: 'bold',
+  },
     style: {
       height: 60,
-      backgroundColor: gray,
-      shadowColor: 'rgba(0, 0, 0, 0.24)',
+      backgroundColor: blue4,
+      shadowColor: black,
       shadowOffset: {
         width: 0,
         height: 3
@@ -88,51 +94,65 @@ const MainNavigator = createAppContainer(
       Home: {
         screen: TabNav
       },
-      DeckDetails: { 
-        screen: DeckDetails,
+      AddDeck: { 
+        screen: AddDeck,
         navigationOptions: {
-          headerTintColor: red,
+          headerTintColor: blue2,
           headerStyle: {
             backgroundColor: blue
           },
-          title: 'Deck Details'
+          title: 'ADD DECK'
         }
       },
       AddCard: {
         screen: AddCard,
         navigationOptions: {
-          headerTintColor: lightgreen,
+          headerTintColor: blue2,
           headerStyle: {
-            backgroundColor: lightgreen
+            backgroundColor: blue
           },
           headerTitleStyle: {
             justifyContent: 'center',
             textAlign: 'center'
           },
-          title: 'Add Card'
+          title: 'ADD CARD'
+        }
+      },
+      Deck: {
+        screen: Deck,
+        navigationOptions: {
+          headerTintColor: blue2,
+          headerStyle: {
+            backgroundColor: blue
+          },
+          headerTitleStyle: {
+            justifyContent: 'center',
+            textAlign: 'center'
+          },
+          title: 'DECK'
         }
       },
       Quiz: {
         screen: Quiz,
         navigationOptions: {
-          headerTintColor: lightgreen,
+          headerTintColor: blue2,
           headerStyle: {
-            backgroundColor: lightgreen
+            backgroundColor: blue
           },
            title: 'Quiz'
+          }
         }
-      }
-    },
-    { headerLayoutPreset: 'center' }
-  )
-);
+      },
+      { headerLayoutPreset: 'center' }
+    )
+  );
 
 export default class App extends React.Component {
 
   render() {
     return (
       <Provider store={createStore(reducer)}>
-        <View style={{ flex: 1 , backgroundColor: '#dde'}}>
+        <View style={{ flex: 1 , backgroundColor: '#FFFFFF'}}>
           <AppStatusBar backgroundColor={gray} barStyle="light-content" />
           <MainNavigator />
         </View>
