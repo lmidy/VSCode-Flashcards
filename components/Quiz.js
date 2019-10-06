@@ -75,14 +75,6 @@ class Quiz extends React.Component{
       }
 }
 
-function mapStateToProps (state, { navigation }) {
-    const { deckId } = navigation.state.params
-    return {
-        deckId,
-        deck: state[deckId]
-    }
-}
-
 const styles = StyleSheet.create({
   center: {
     flex: 1,
@@ -98,5 +90,13 @@ const styles = StyleSheet.create({
     fontSize: 18
   }
 })
+
+function mapStateToProps (state, { navigation }) {
+    const { deckId } = navigation.state.params
+    return {
+        deckId,
+        deck: state[deckId]
+    }
+}
 
 export default connect(mapStateToProps)(Quiz)

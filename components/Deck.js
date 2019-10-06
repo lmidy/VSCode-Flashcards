@@ -27,7 +27,7 @@ class Deck extends React.Component{
         const { opacity } = this.state
         const { deckId } = this.props
         const { questions, title } = this.props.deck 
-        // Pressing on a deck in the list should generate an animation, and the app should route to an individual deck view.
+    
         return(
             <Animated.View style={[styles.deck, { opacity }]}>
                 <Text style={styles.title}>{title}</Text>
@@ -51,9 +51,11 @@ class Deck extends React.Component{
 
 const styles = StyleSheet.create({
     deck: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flex:1,
+        margin: 10
+            
     },
     title: {
         fontSize: 30,

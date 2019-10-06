@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
 import { AppLoading } from 'expo'
 import DeckList from './DeckList'
+import { gray,  white, blue, lightgreen, blue4, blue2, bluegray } from '../utils/colors';
 
 class Decks extends React.Component{
     constructor(props){
@@ -29,8 +30,8 @@ class Decks extends React.Component{
             return <AppLoading />
 
         return(
-            <View style={styles.list}>
-              <Text> FlashCards </Text>
+            <View style={styles.container}>
+              <Text style={styles.title}> FlashCards </Text>
                 <FlatList
                  data={Object.keys(decks).map((id) => { return { key: id } })}
                  renderItem={({item}) => (
@@ -42,13 +43,6 @@ class Decks extends React.Component{
     }
 }
 
-const styles = StyleSheet.create({
-    list: {
-        flex: 1,
-        alignSelf: 'stretch'
-    }
-})
-
 function mapStateToProps(decks) {
     return {
         decks
@@ -56,3 +50,21 @@ function mapStateToProps(decks) {
 }
 
 export default connect(mapStateToProps)(Decks)
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingTop: 40,
+      paddingLeft: 16,
+      paddingRight: 16,
+      paddingBottom: 16,
+      backgroundColor: white
+    },
+    block: {
+      marginBottom: 20
+    },
+    title: {
+      textAlign: 'center',
+      fontSize: 20
+    }
+  });
