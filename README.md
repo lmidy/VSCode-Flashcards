@@ -21,5 +21,7 @@ This application was tested in iOS Phone 7
 ### Flashcard Application Functionality
 
 Follow steps in rubric as required to validate end to end flow.
-[!UdacityFlashcards](https://github.com/lmidy/VSCode-Flashcards/blob/V1/UdacityFlashcards)
+![UdacityFlashcards](https://github.com/lmidy/VSCode-Flashcards/blob/V1/UdacityFlashcards)
+
+
 
