@@ -23,7 +23,6 @@ import AddCard from "./components/AddCard";
 import Decks from "./components/Decks";
 import Deck from "./components/Deck";
 import Quiz from "./components/Quiz";
-import Test from "./components/Test";
 import { setLocalNotification } from './utils/helpers';
 
 function AppStatusBar() {
@@ -54,15 +53,6 @@ const Tabs = {
           size={30}
           color={tintColor}
         />
-      )
-    }
-  },
-  Test: {
-    screen: Test,
-    navigationOptions: {
-      tabBarLabel: "Test",
-      tabBarIcon: ({ tintColor }) => (
-        <Icon.AntDesign name="stepforward" size={30} color={tintColor} />
       )
     }
   }

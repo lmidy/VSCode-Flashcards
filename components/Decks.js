@@ -31,7 +31,7 @@ class Decks extends React.Component{
 
         return(
             <View style={styles.container}>
-              <Text style={styles.title}> FlashCards </Text>
+              <Text style={styles.title}> Mobile FlashCards </Text>
                 <FlatList
                  data={Object.keys(decks).map((id) => { return { key: id } })}
                  renderItem={({item}) => (

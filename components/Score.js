@@ -10,11 +10,8 @@ function Score(props) {
   return (
     <View style={styles.center}>
       <Text style={styles.totalScore}>
-        You Scored {Math.round((correct / deck.questions.length) * 100)}
+        You Scored {Math.round((correct / deck.questions.length) * 100)}%
       </Text>
-      <Text style={styles.score}>Correct: {correct}</Text>
-      <Text style={styles.score}>Incorrect: {incorrect}</Text>
-
       <CustomButton style={styles.button} onPress={restart}>
         <Text style={styles.buttonText}>Restart Quiz</Text>
       </CustomButton>
@@ -25,7 +22,7 @@ function Score(props) {
           navigation.navigate("Deck", { deckId: deckId, deckName: deck.title })
         }
       >
-        <Text style={styles.buttonText}>Back to Deck</Text>
+        <Text style={styles.buttonText}>Back to Deck {deck.title}</Text>
       </CustomButton>
     </View>
   );
@@ -53,13 +50,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     alignItems: "center",
   },
-  score: {
-    color: black,
-    fontSize: 25,
-    marginBottom: 5
-  },
   totalScore: {
     color: blue4,
-    fontSize: 50
+    fontSize: 50,
+    marginBottom: 45
   }
 });

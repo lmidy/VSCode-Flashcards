@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { black } from '../utils/colors'
+import { gray, black} from '../utils/colors'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 import { connect } from 'react-redux'
 import Card from './Card'
 import Score from './Score'
+import Deck from './Deck'
 
 class Quiz extends React.Component {
   constructor(props) {
@@ -51,8 +52,11 @@ class Quiz extends React.Component {
 
     return (
       <View style={styles.center}>
+         <Text style={styles.deckTitle}>
+         Deck: {deck.title}
+        </Text>
         <Text style={styles.count}>
-          {showCard ? index + 1 : index}/{deck.questions.length}
+          Showing card {showCard ? index + 1 : index} of {deck.questions.length} 
         </Text>
         {showCard ? (
           <Card
@@ -89,15 +93,18 @@ export default connect(mapStateToProps)(Quiz);
 const styles = StyleSheet.create({
     center: {
       flex: 1,
-      justifyContent: "center",
       alignItems: "center"
     },
+    deckTitle: {
+        textAlign: "center",
+        fontSize: 25,
+        marginTop: 30
+    },
     count: {
-      alignSelf: "flex-start",
-      marginTop: 10,
-      marginLeft: 10,
-      color: black,
+      alignSelf:"center",
+      color: gray,
       fontWeight: "bold",
-      fontSize: 18
+      fontSize: 18, 
+      marginTop: 5
     }
   });
