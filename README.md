@@ -4,8 +4,6 @@
 
 Project Rubric [https://review.udacity.com/#!/rubrics/1021/view](https://review.udacity.com/#!/rubrics/1021/view)
 
-Design Artifacts - TODO
-
 
 ### Installation and launch instructions
 
@@ -18,14 +16,10 @@ npm start
 
 ### Platform Tested
 
-This application was tested in iOS simulator
+This application was tested in iOS Phone 7
 
 ### Flashcard Application Functionality
 
 Follow steps in rubric as required to validate end to end flow.
-[![Video](todo)
+[!UdacityFlashcards](https://github.com/lmidy/VSCode-Flashcards/blob/V1/UdacityFlashcards)
 
-
-### Known Bugs
-
-TODO
