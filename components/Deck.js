@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Animated
-} from "react-native";
+import { View, Text, StyleSheet, Animated } from "react-native";
 import { connect } from "react-redux";
 import { black, gray, white } from "../utils/colors";
 import CustomButton from "./CustomButton";
@@ -35,30 +30,30 @@ class Deck extends React.Component {
     const { questions, title } = this.props.deck;
 
     return (
-    <View style={styles.container}> 
+      <View style={styles.container}>
         <Animated.View style={[styles.deck, { opacity }]}>
-            <Text style={styles.deckTitle}>{title}</Text>
-            <Text style={styles.count}>
+          <Text style={styles.deckTitle}>{title}</Text>
+          <Text style={styles.count}>
             {questions.length} {questions.length === 1 ? `card` : `cards`}
-            </Text>
-            <CustomButton
+          </Text>
+          <CustomButton
             style={styles.button}
             onPress={() =>
-                this.props.navigation.navigate("AddCard", { deckId: deckId })
+              this.props.navigation.navigate("AddCard", { deckId: deckId })
             }
-            >
+          >
             <Text style={styles.buttonText}>Add Card</Text>
-            </CustomButton>
-            <CustomButton
+          </CustomButton>
+          <CustomButton
             style={styles.button}
             onPress={() =>
-                questions.length === 0
+              questions.length === 0
                 ? alert("Please add a few cards first")
                 : this.props.navigation.navigate("Quiz", { deckId: deckId })
             }
-            >
+          >
             <Text style={styles.buttonText}>Start Quiz</Text>
-            </CustomButton>
+          </CustomButton>
         </Animated.View>
       </View>
     );
@@ -76,35 +71,33 @@ function mapStateToProps(state, { navigation }) {
 export default connect(mapStateToProps)(Deck);
 
 const styles = StyleSheet.create({
-    container:
-    {
-      flex: 1,
-      paddingTop: 40,
-      paddingLeft: 16,
-      paddingRight: 16,
-      paddingBottom: 16,
-
-    },
-    deck: {
-      alignItems: "center",
-      flex: 1,
-      margin: 10
-    },
-    deckTitle: {
-      fontSize: 25,
-      color: black
-    },
-    count: {
-      marginTop: 20,
-      fontSize: 20,
-      color: gray
-    },
-    button: {
-      height: 40,
-      width: 315, 
-    },
-    buttonText: {
-      fontSize: 16,
-      color: white
-    }
-  });
+  container: {
+    flex: 1,
+    paddingTop: 40,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 16
+  },
+  deck: {
+    alignItems: "center",
+    flex: 1,
+    margin: 10
+  },
+  deckTitle: {
+    fontSize: 25,
+    color: black
+  },
+  count: {
+    marginTop: 20,
+    fontSize: 20,
+    color: gray
+  },
+  button: {
+    height: 40,
+    width: 315
+  },
+  buttonText: {
+    fontSize: 16,
+    color: white
+  }
+});

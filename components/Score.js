@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { black, white, blue4 } from "../utils/colors";
+import { View, Text, StyleSheet } from "react-native";
+import { white, blue4 } from "../utils/colors";
 import { withNavigation } from "react-navigation";
 import CustomButton from "./CustomButton";
 
 function Score(props) {
-  const { correct, incorrect, restart, deck, deckId, navigation } = props;
+  const { correct, restart, deck, deckId, navigation } = props;
 
   return (
     <View style={styles.center}>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: white,
     fontSize: 16,
-    alignItems: "center",
+    alignItems: "center"
   },
   totalScore: {
     color: blue4,

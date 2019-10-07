@@ -35,7 +35,6 @@ class AddCard extends React.Component {
       answer: ""
     });
     saveCard(deckId, question, answer);
-  
   };
 
   render() {
